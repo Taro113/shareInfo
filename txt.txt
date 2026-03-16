@@ -327,3 +327,12 @@ https://movie.douban.com/annual/2025/
 
 
 
+---
+
+https://daxue.sankuai.com/personal.html#!/square/class/detail/task?task_id=190624&task_type=2&reload=1&id=75257&type=0
+
+AI生成
+
+先生成结构，再在每个结构中生成细节
+
+Prompt 万能公式 = 定义角色 + 背景描述 + 定目标 + 补充要求（附加、例子）
