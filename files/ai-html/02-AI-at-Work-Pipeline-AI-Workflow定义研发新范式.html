@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI at Work：Pipeline AI Workflow 定义研发新范式</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    line-height: 1.8;
+    color: #333;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: #fff;
+  }
+  h1 { font-size: 2em; border-bottom: 2px solid #e1e4e8; padding-bottom: 0.3em; margin-top: 1.5em; }
+  h2 { font-size: 1.5em; border-bottom: 1px solid #e1e4e8; padding-bottom: 0.2em; margin-top: 1.4em; }
+  h3 { font-size: 1.25em; margin-top: 1.2em; }
+  h4, h5, h6 { margin-top: 1em; }
+  code {
+    background: #f6f8fa;
+    border-radius: 3px;
+    padding: 0.2em 0.4em;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.9em;
+  }
+  pre {
+    background: #f6f8fa;
+    border-radius: 6px;
+    padding: 16px;
+    overflow: auto;
+    line-height: 1.6;
+  }
+  pre code {
+    background: none;
+    padding: 0;
+    font-size: 0.9em;
+  }
+  blockquote {
+    border-left: 4px solid #dfe2e5;
+    color: #6a737d;
+    margin: 0;
+    padding: 0 1em;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+  }
+  th, td {
+    border: 1px solid #dfe2e5;
+    padding: 8px 12px;
+    text-align: left;
+  }
+  th { background: #f6f8fa; font-weight: 600; }
+  tr:nth-child(even) { background: #fafbfc; }
+  a { color: #0366d6; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img { max-width: 100%; }
+  hr { border: none; border-top: 1px solid #e1e4e8; margin: 2em 0; }
+  .source-info {
+    background: #f1f8ff;
+    border: 1px solid #c8e1ff;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 2em;
+    font-size: 0.9em;
+    color: #586069;
+  }
+</style>
+</head>
+<body>
+<div class="source-info">
+  📄 来源：<a href="https://km.sankuai.com/collabpage/2751469808" target="_blank">https://km.sankuai.com/collabpage/2751469808</a>
+</div>
+<blockquote><p>⚠️ <strong>注意（仅供阅读）</strong>：此内容为简化版 Markdown，仅供阅读和总结，</p></blockquote>
+<blockquote><p><strong>不可直接用于 createDocument --content 或 updateDocumentByXml</strong>。</p></blockquote>
+<blockquote><p>如需编辑文档，请使用 <code>getDocumentXml</code> 获取完整格式后再通过 <code>updateDocumentByXml</code> 回传。</p></blockquote>
+<blockquote><p>直接用此内容编辑会丢失样式宏、合并表格、NodeID 等关键信息，导致文档数据损坏。</p></blockquote>
+
+<hr>
+
+<h1>AI at Work：Pipeline AI Workflow 定义研发新范式</h1>
+
+<blockquote><p>一条命令，十个阶段，从"我有个需求"到"提测"全程自动化</p></blockquote>
+
+<hr>
+
+<blockquote><p><strong>💡 提示：</strong></p></blockquote>
+<blockquote><p></p></blockquote>
+<blockquote><p>快速使用：<a href="https://km.sankuai.com/collabpage/2751469808#b-c50ade997abd44b097b5426955e4946a">如何安装使用</a></p></blockquote>
+<blockquote><p></p></blockquote>
+<blockquote><p>用户群：<a href="https://km.sankuai.com/collabpage/2751469808#b-a8e57c82d5514006b5ab1a0f05d7311c">加入用户群</a></p></blockquote>
+
+<h3>一、Pipeline AI Workflow 是什么？</h3>
+
+<p>Pipeline AI Workflow 是一个<strong>研发全生命周期工作流</strong><strong>自动化框架</strong>，运行在 CatClaw/CatDesk/CatPaw…（美团 AI Agent 平台）上。</p>
+
+<p>它的核心理念是：<strong>把研发交付流程的每个阶段都变成可执行的自动化节点</strong>，通过声明式 DAG 串联成一条端到端的流水线。从需求分析开始，到最后交付报告，十个阶段自动衔接，每个阶段完成后自动写入学城文档，无需人工等待确认直接进入下一阶段。</p>
+
+<h4>架构设计</h4>
+
+<p>!<a href="https://km.sankuai.com/api/file/cdn/2751469808/235674606277?contentType=1&isNewContent=false">图片</a></p>
+
+<pre><code class="language-Text">// “一口气”完成十个阶段
+你的输入：需求描述 + 学城父文档 ID
+
+↓
+Stage 0  初始化           → 状态初始化、依赖检查、manifest 验证
+Stage 1  需求分析          → 01-需求分析文档（PRD + 复杂度评估 + 评审意见）[Checkpoint]
+Stage 2  技术方案          → 02-技术方案（服务识别 + 架构设计 + 方案评审）[Checkpoint]
+Stage 3  MEP 分支管理      → feature 分支创建 + 工作项关联
+Stage 4  编码实现          → 03-实施计划 + 04-单测覆盖报告（增量覆盖率 ≥ 60% 门控）
+Stage 5  提交 &amp; PR         → Commit + PR 创建 + 覆盖率前置验证 + 自动 Code Review
+Stage 6  生成测试用例      → 05-测试用例（正常/边界/异常场景）[与 Stage 5 并行]
+Stage 7  提测              → 06-提测单
+Stage 8  自动化测试        → 05b-自动化测试报告（通过/失败/跳过统计）
+Stage 9  交付报告          → 07-交付报告（汇总产出链接 + 各阶段耗时）+ 大象群通知</code></pre>
+
+<pre><code class="language-Text">// 学城目录结构
+父文档（你提供的 km_parent_id）
+└── {需求名称}（目录容器）
+    ├── 01-需求分析文档
+    ├── 02-技术方案
+    ├── 03-实施计划
+    ├── 04-单测覆盖报告
+    ├── 05-测试用例
+    ├── 06-提测单
+    └── 07-交付报告</code></pre>
+
+<hr>
+
+<h3>二、涉及的 Skills 与 MCP Tools 全景</h3>
+
+<p>Pipeline AI Workflow 是一个<strong>工作流控制器</strong>，它将以下 sub-agent 和 MCP Tools 串联调度。<a href="https://km.sankuai.com/collabpage/2752188868">https://km.sankuai.com/collabpage/2752188868</a></p>
+
+<h4>核心 sub-agent（来自 pipeline-workflow）</h4>
+
+<table>
+<tr><th>阶段</th><th>sub-agent 名称</th><th>作用</th></tr>
+<tr><td>阶段一</td><td>`requirements-analyst`</td><td>将模糊需求转化为结构化 PRD，主动识别歧义，发起澄清问题</td></tr>
+<tr><td>阶段一</td><td>`evaluate-requirements`</td><td>评估技术可行性、工作量（L/M/H）、爆炸半径、风险点</td></tr>
+<tr><td>阶段二</td><td>`pipeline-services-analyst`</td><td>三轮评分判定需求涉及哪些微服务仓库（Owner/Contributor）</td></tr>
+<tr><td>阶段二</td><td>`technology-plan-reviewer`</td><td>对技术方案进行架构评审，识别设计风险</td></tr>
+<tr><td>阶段四</td><td>`using-git-worktrees`</td><td>基于 feature 分支创建隔离 Git Worktree，防止分支污染</td></tr>
+<tr><td>阶段四</td><td>`writing-plans`</td><td>生成 TDD 驱动的 bite-sized 实施计划，每步含完整代码和测试命令</td></tr>
+<tr><td>阶段四</td><td>`subagent-driven-development`</td><td>每个任务派独立 Sub-agent，双轮 Review（Spec合规 + 代码质量）</td></tr>
+<tr><td>阶段五</td><td>`code-commit-assistant`</td><td>分析 diff 自动生成符合 Angular 规范的 Commit Message</td></tr>
+<tr><td>阶段五</td><td>`pipeline-pr-creator`</td><td>自动创建 PR，关联 MEP 工作项</td></tr>
+<tr><td>阶段五</td><td>`pr-code-reviewer`</td><td>基于需求/技术方案提炼 Review 依据矩阵，行级评论，自动 Approve</td></tr>
+<tr><td>阶段六</td><td>`test-case-generator`</td><td>生成正常/边界/异常三类测试用例，写入学城</td></tr>
+</table>
+
+<h4>外部 Skills（独立安装）</h4>
+
+<table>
+<tr><th>阶段</th><th>Skill 名称</th><th>作用</th></tr>
+<tr><td>阶段三、七</td><td>`ee-ones`</td><td>创建 MEP 工作项、管理分支、关联工作项、创建提测单</td></tr>
+<tr><td>全程</td><td>`citadel`</td><td>读写学城文档，每个阶段产出自动存档</td></tr>
+<tr><td>阶段七</td><td>`ee-pipeline`</td><td>触发执行流水线，回收流水线执行结果和日志</td></tr>
+</table>
+
+<h4>MCP Tools（通过 Friday MCP 接入）</h4>
+
+<table>
+<tr><th>工具</th><th>用途</th></tr>
+<tr><td>`mcp_markdown2km` / `citadel createDocument`</td><td>将 Markdown 内容写入学城文档</td></tr>
+<tr><td>`ones2` CLI</td><td>MEP 工作项、分支、提测单操作</td></tr>
+</table>
+
+<hr>
+
+<h3>三、与传统 Pipeline 的核心区别</h3>
+
+<p>Pipeline AI Workflow 把 CI/CD 流水线<strong>向前延伸了整整一个研发生命周期</strong>，覆盖从需求到提测的全过程。</p>
+
+<p>!<a href="https://km.sankuai.com/api/file/cdn/2751469808/235681056613?contentType=1&isNewContent=false">comparison-diagram.png</a></p>
+
+<hr>
+
+<h3>四、如何安装、配置和使用</h3>
+
+<h4>快速安装</h4>
+
+<blockquote><p><strong>❗ 注意：</strong></p></blockquote>
+<blockquote><p></p></blockquote>
+<blockquote><p><strong>终极秘诀：将此文档给到CatPaw/CatPaw Desk/CatClaw，让AI帮你完成安装与更新。</strong></p></blockquote>
+<blockquote><p></p></blockquote>
+<blockquote><p><strong>⭐️⭐️⭐️注意Catpaw版本需要26.3.1版本，Hook机制可以保障阶段流程准确度</strong></p></blockquote>
+
+<p>第一步：克隆项目仓库(ssh://git@git.sankuai.com/ee-plugins/super-assistant.git)</p>
+
+<pre><code class="language-JSON">// 克隆命令
+git clone ssh://git@git.sankuai.com/ee-plugins/super-assistant.git</code></pre>
+
+<p>第二步：执行下面安装脚本/让AI直接执行install<em>super</em>assistant.py</p>
+
+<pre><code class="language-JSON">// 安装命令
+# 在 CatPaw/CatPaw Desk/CatClaw/Claude Code 工作区执行
+python skills/ppl-yc-pipeline-workflow/scripts/install_super_assistant.py</code></pre>
+
+<pre><code class="language-JSON">// 更新命令
+python ~/.pipeline-ai-workflow/repo/skills/ppl-yc-pipeline-workflow/scripts/install_super_assistant.py --update</code></pre>
+
+<hr>
+
+<h4>配置</h4>
+
+<p>执行 Pipeline AI Workflow 前，准备以下参数（不足时 AI 会主动询问）：</p>
+
+<table>
+<tr><th>参数</th><th>必填</th><th>说明</th><th>示例</th></tr>
+<tr><td>需求链接或描述</td><td>✅</td><td>需求描述或MEP工作项链接</td><td>`新增超管临时查看权限入口...`</td></tr>
+<tr><td>学城写入目录ID</td><td>✅</td><td>学城父文档 contentId，阶段文档写在此节点下</td><td>`2750912975`</td></tr>
+<tr><td>服务说明书</td><td>✅</td><td>团队或需求涉及到的所有服务的结构与功能说明 （仅第一次使用的时候需要输入，输入后会自动记录，后续直接延用）</td><td>[https://km.sankuai.com/collabpage/2752030133](https://km.sankuai.com/collabpage/2752030133)</td></tr>
+</table>
+
+<hr>
+
+<h4>使用</h4>
+
+<p>只需一句话：</p>
+
+<pre><code>// 代码块
+使用Pipeline Workflow开始做需求：在流水线详情页新增&quot;智能归因&quot;Tab，展示 AI 分析结果，仅灰度组织可见。
+学城父文档 ID：2750912975
+关联服务说明书：https://km.sankuai.com/collabpage/2752030133</code></pre>
+
+<p>AI 会自动收集缺少的参数，然后逐阶段执行。</p>
+
+<h5>断点续跑</h5>
+
+<p>任意阶段失败时，可从断点继续：</p>
+
+<pre><code>// 代码块
+从阶段4继续
+跳过阶段6直接提测
+重新执行阶段3</code></pre>
+
+<p>Pipeline AI Workflow 会读取 <code>/.pipeline-ai-workflow/ppl-yc-pipeline-workflow/</code><code>{req<em>name</em>slug}</code><code>/state.json</code> 中的进度状态，无缝衔接。</p>
+
+<h5>触发关键词</h5>
+
+<blockquote><p><strong>❗ 注意：</strong></p></blockquote>
+<blockquote><p></p></blockquote>
+<blockquote><p>如果下方指令都无法激活命中，则可以通过手动指定 <code>ppl-yc-pipeline-workflow</code>这个 Skill</p></blockquote>
+
+<p>以下任意表达都会激活 Pipeline AI Workflow：</p>
+
+<li>「开始做需求」「需求开发」</li>
+<li>「全流程开发」「dev delivery」</li>
+<li>「Pipeline AI Workflow」</li>
+<li>直接粘贴 PRD 文档 / MEP 工作项链接 + "按流程开发"</li>
+
+<hr>
+
+<h3>五、案例</h3>
+
+<p><a href="https://km.sankuai.com/collabpage/2757768087">https://km.sankuai.com/collabpage/2757768087</a></p>
+
+<hr>
+
+<h3>七、设计理念</h3>
+
+<li><strong>测试驱动开发</strong> — TDD 贯穿全流程，增量覆盖率 ≥ 60% 为硬门控，五层防线确保质量</li>
+<li><strong>系统化而非随意</strong> — 声明式 DAG 驱动流程，非 ad-hoc 脚本</li>
+<li><strong>多层防线</strong> — 覆盖率五层检查，评审门控 fail-closed，评审状态机保证收敛</li>
+<li><strong>非阻塞通知</strong> — 阶段进度实时推送大象群，不阻塞主流程</li>
+<li><strong>优雅降级</strong> — 工具缺失时警告而非崩溃，保持流程可用</li>
+<li><strong>幂等与断点续跑</strong> — 任何阶段可重复执行，失败后可断点恢复</li>
+
+<hr>
+
+<h3>写在最后</h3>
+
+<p>Pipeline AI Workflow不是要替代研发——它是要<strong>让研发回归真正有价值的工作</strong>。</p>
+
+<p>重复性的流程（需求对齐 → 方案沉淀 → 编码实现 → Review 意见 → 测试用例）是可以系统化的，Pipeline AI Workflow 把这些做掉了。</p>
+
+<p>剩下的——<strong>技术判断、架构权衡、产品洞察</strong>——才是研发不可替代的价值所在。</p>
+
+<h2><strong>欢迎加入用户群</strong></h2>
+
+<blockquote><p><strong>⚠️ 警示：</strong></p></blockquote>
+<blockquote><p></p></blockquote>
+<blockquote><p><strong>1群</strong><strong>、2群满了，加3群</strong></p></blockquote>
+
+<p>!<a href="https://km.sankuai.com/api/file/cdn/2751469808/233754445090?contentType=1">Pipeline AI Workflow用户3群群二维码.png</a>!<a href="https://km.sankuai.com/api/file/cdn/2751469808/231392182941?contentType=1&isNewContent=false">Pipeline AI Workflow用户2群群二维码.png</a>!<a href="https://km.sankuai.com/api/file/cdn/2751469808/231062474612?contentType=1&isNewContent=false">Pipeline AI Workflow用户群群二维码.png</a>​</p>
+
+</body>
+</html>
