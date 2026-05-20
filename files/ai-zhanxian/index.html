@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💡「AI实战现场」栏目</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+               "Microsoft YaHei", "Segoe UI", sans-serif;
+  font-size: 15px; line-height: 1.8; color: #1a1a1a;
+  background: #f5f6f7; padding: 0;
+}
+.page-wrap {
+  max-width: 900px; margin: 0 auto; background: #fff;
+  min-height: 100vh; padding: 40px 48px 80px;
+}
+h1 { font-size: 1.9em; margin: 1.4em 0 .6em; color: #0d0d0d; }
+h2 { font-size: 1.45em; margin: 1.3em 0 .5em; color: #111; border-bottom: 2px solid #eee; padding-bottom: .3em;}
+h3 { font-size: 1.2em; margin: 1.1em 0 .4em; color: #222; }
+h4, h5, h6 { font-size: 1em; margin: 1em 0 .3em; color: #333; }
+p { margin: .6em 0; }
+a { color: #1a73e8; text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; height: auto; display: block; margin: 8px auto; border-radius: 4px; }
+blockquote {
+  border-left: 4px solid #d0d0d0; background: #fafafa;
+  padding: 10px 16px; margin: 12px 0; border-radius: 0 6px 6px 0; color: #555;
+}
+blockquote p { margin: 4px 0; }
+code {
+  background: #f0f0f0; border-radius: 3px; padding: 1px 5px;
+  font-family: "JetBrains Mono", "Fira Code", monospace; font-size: .9em;
+}
+pre {
+  background: #1e1e1e; color: #d4d4d4; border-radius: 8px;
+  padding: 16px; overflow-x: auto; margin: 12px 0;
+}
+pre code { background: none; color: inherit; padding: 0; }
+.table-wrap { overflow-x: auto; margin: 14px 0; }
+table { border-collapse: collapse; width: 100%; font-size: .93em; }
+th, td {
+  border: 1px solid #ddd; padding: 8px 12px; text-align: left; vertical-align: top;
+}
+th { background: #f7f7f7; font-weight: 600; }
+tr:nth-child(even) td { background: #fafafa; }
+ul, ol { padding-left: 1.8em; margin: .5em 0; }
+li { margin: .2em 0; }
+hr { border: none; border-top: 2px solid #eee; margin: 24px 0; }
+.video-wrap { margin: 16px 0; }
+.video-label { font-weight: 600; margin-bottom: 6px; color: #555; }
+video { max-width: 100%; border-radius: 8px; }
+.attachment {
+  background: #f0f4ff; border: 1px solid #c7d5ff; border-radius: 6px;
+  padding: 8px 14px; margin: 8px 0; display: inline-block;
+}
+.attachment a { color: #1a73e8; }
+nav.breadcrumb { font-size: .85em; color: #888; margin-bottom: 24px; }
+nav.breadcrumb a { color: #1a73e8; }
+footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #eee; color: #999; font-size: .82em; text-align: center; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+<nav class="breadcrumb">导航：<strong>💡 栏目首页</strong> | <a href="doc_01.html">01期</a> | <a href="doc_02.html">02期</a> | <a href="doc_03.html">03期</a> | <a href="doc_04.html">04期</a></nav>
+<blockquote>
+<p>⚠️ <strong>注意（仅供阅读）</strong>：此内容为简化版 Markdown，仅供阅读和总结，</p>
+<p><strong>不可直接用于 createDocument --content 或 updateDocumentByXml</strong>。</p>
+<p>如需编辑文档，请使用 <code>getDocumentXml</code> 获取完整格式后再通过 <code>updateDocumentByXml</code> 回传。</p>
+<p>直接用此内容编辑会丢失样式宏、合并表格、NodeID 等关键信息，导致文档数据损坏。</p>
+</blockquote>
+
+<hr>
+
+<h1>💡「AI实战现场」栏目</h1>
+
+<p><img src="assets/e706bbe40c83.jpg" alt="image.jpg" loading="lazy"></p>
+
+<blockquote>
+<p><strong>✍️写在前面✍️</strong></p>
+<p>随着 AI 工具 已深度融入到我们的日常工作中，相信大家主要的困惑已从「不会用AI工具」转变为「想不到使用场景」。比如：知道龙虾能帮忙写文档，却不清楚它还能做数据分析和内容萃取；知道 CatDesk 能实现零代码开发应用，但觉得"那得是技术同学才能做的事"，从没想过自己也能搓一个....同时也想知道和自己岗位相似的同学，TA们是如何在日常工作中借助 AI 工具提效的。</p>
+<p><strong>为此，我们推出「AI实战现场」系列栏目——每期聚焦一个真实的 AI 使用场景，不讲理论，只看实战案例。小而美、可复用、能落地是本栏目的宗旨。希望通过持续萃取和传播真实实践案例，帮助大家从中获取启发与借鉴，找到属于自己的 AI 实战用法。</strong></p>
+<p>⚠️小编特别提醒： 案例来源为真实场景、真实案例、真实踩坑，希望能够给你一些灵感参考。为保护个人隐私，文中人物已作化名处理。</p>
+</blockquote>
+
+<div class="table-wrap"><table>
+<tr><th><strong>期数</strong></th><th><strong>案例标题</strong></th><th><strong>离线阅读</strong></th><th><strong>学城原文</strong></th></tr>
+<tr>
+  <td><strong>01期</strong></td>
+  <td>同样一篇资料，别人硬啃 2 小时，他用团子老师 20 分钟学透</td>
+  <td><a href="doc_01.html">本地查看</a></td>
+  <td><a href="https://123.sankuai.com/huati/question/245920" target="_blank">话题社区</a></td>
+</tr>
+<tr>
+  <td><strong>02期</strong></td>
+  <td>一杯咖啡的时间搞定「经验萃取 + PPT 制作」全链路</td>
+  <td><a href="doc_02.html">本地查看</a></td>
+  <td><a href="https://km.sankuai.com/collabpage/2760959602" target="_blank">学城文档</a></td>
+</tr>
+<tr>
+  <td><strong>03期</strong></td>
+  <td>和高手对话 1000 轮之后，我把自己的思维模式也蒸馏出来了</td>
+  <td><a href="doc_03.html">本地查看</a></td>
+  <td><a href="https://km.sankuai.com/collabpage/2762124853" target="_blank">学城文档</a></td>
+</tr>
+<tr>
+  <td><strong>04期</strong></td>
+  <td>酒旅设计师 SDD 实践：赏花目的地活动从 15pd 到 8pd 的全链路交付</td>
+  <td><a href="doc_04.html">本地查看</a></td>
+  <td><a href="https://km.sankuai.com/collabpage/2763183224" target="_blank">学城文档</a></td>
+</tr>
+</table></div>
+
+<footer>
+  <p>来源：<a href="https://km.sankuai.com/collabpage/" target="_blank">美团学城</a> · 离线版本，仅供参考</p>
+</footer>
+</div>
+</body>
+</html>

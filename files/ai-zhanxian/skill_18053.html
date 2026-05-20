@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hotel-sdd Skill — 需求交付全流程工具</title><style>* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 15px; line-height: 1.8; color: #1a1a1a; background: #f5f6f7; }
+.page-wrap { max-width: 900px; margin: 0 auto; background: #fff; min-height: 100vh; padding: 40px 48px 80px; }
+h1 { font-size: 1.9em; margin: 1.4em 0 .6em; color: #0d0d0d; }
+h2 { font-size: 1.45em; margin: 1.3em 0 .5em; color: #111; border-bottom: 2px solid #eee; padding-bottom: .3em;}
+h3 { font-size: 1.2em; margin: 1.1em 0 .4em; color: #222; }
+p { margin: .6em 0; }
+a { color: #1a73e8; text-decoration: none; } a:hover { text-decoration: underline; }
+code { background: #f0f0f0; border-radius: 3px; padding: 1px 5px; font-family: monospace; font-size: .9em; }
+pre { background: #1e1e1e; color: #d4d4d4; border-radius: 8px; padding: 16px; overflow-x: auto; margin: 12px 0; }
+pre code { background: none; color: inherit; padding: 0; }
+.table-wrap { overflow-x: auto; margin: 14px 0; }
+table { border-collapse: collapse; width: 100%; font-size: .93em; }
+th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; vertical-align: top; }
+th { background: #f7f7f7; font-weight: 600; }
+ul, ol { padding-left: 1.8em; margin: .5em 0; } li { margin: .2em 0; }
+hr { border: none; border-top: 2px solid #eee; margin: 24px 0; }
+.meta-box { background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+.meta-box th { background: none; width: 120px; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .8em; font-weight: 600;
+  margin: 0 3px; background: #e8f0fe; color: #1a73e8; }
+.skill-header { background: linear-gradient(135deg, #f0f4ff, #e8f0fe); border-radius: 10px; padding: 24px 28px; margin: 20px 0 28px; }
+.skill-header h1 { margin: 0 0 8px; font-size: 1.6em; }
+.skill-header .desc { color: #444; margin: 8px 0 12px; }
+nav.breadcrumb { font-size: .85em; color: #888; margin-bottom: 24px; }
+nav.breadcrumb a { color: #1a73e8; }
+footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #eee; color: #999; font-size: .82em; text-align: center; }
+.section { margin: 20px 0; }
+.tag-row { margin: 8px 0; }
+blockquote { border-left: 4px solid #ddd; margin: 12px 0; padding: 8px 16px; background: #fafafa; color: #555; }
+.mermaid-block { background: #f8f9ff; border: 1px solid #dde; border-radius: 8px; padding: 16px; margin: 12px 0; overflow-x: auto; white-space: pre; font-family: monospace; font-size: .85em; color: #334; }</style></head>
+<body><div class="page-wrap">
+<nav class="breadcrumb">导航：<a href="index.html">💡 栏目首页</a> | <a href="doc_04.html">04期</a></nav>
+<div class="skill-header"><h1>⚡ hotel-sdd</h1><div class="desc">面向需求交付与开发执行的端到端编排 Skill，支持需求澄清→技术方案→编码→部署→测试→上线的完整 8 阶段流程，适用于酒旅前后端研发。</div><div class="tag-row"><span class="badge">需求交付</span><span class="badge">技术开发</span><span class="badge">端到端流程</span></div></div>
+<div class="meta-box"><div class="table-wrap"><table>
+<tr><th>Skill ID</th><td>18053</td><th>版本</th><td>V63</td><th>创建人</th><td>dongshiwen</td></tr>
+<tr><th>原始链接</th><td colspan="3"><a href="https://friday.sankuai.com/skills/skill-detail?activeTab=overview&activeTestTab=cases&id=18053" target="_blank">https://friday.sankuai.com/skills/skill-detail?activeTab=overview&activeTestTab=cases&id=18053</a></td></tr>
+</table></div></div>
+<hr>
+<div class="section"><h2>简介</h2><p>面向需求交付与开发执行的端到端编排 skill。用于处理需求澄清、组件前端技术方案、活动配置与后端服务方案、分支准备（可选 Fedo 或按需求从 master 创建分支）、编码、自测、部署测试环境、自动化测试、提 PR 与智能 CR、自动检查可合并状态并合并、上线发布等完整流程。</p><p>共 8 个阶段：需求澄清 → 技术方案与协同契约 → 分支准备 → 编码 → 部署测试环境 → 自动化测试 → 提 PR 与智能 CR → 上线发布。</p><p>支持从阶段一完整开始，也支持从部署测试环境、自动化测试、提 PR、上线等中间阶段介入，并支持会话断点续接。支持用户显式要求时对阶段一/需求澄清阶段做复盘。</p></div><div class="section"><h2>目录结构</h2><pre><code>hotel-sdd/
+├── SKILL.md                         # 主编排文件
+├── config/
+│   └── hotel.yaml                   # 可选流程配置（仓库映射、Talos 参数）
+├── src/
+│   ├── 01-requirement-clarify.md    # 阶段一：需求澄清
+│   ├── 02-tech-solution.md          # 阶段二：技术方案与协同契约
+│   ├── 03-fedo.md                   # 阶段三：分支准备（可选 Fedo）
+│   ├── 04-coding.md                 # 阶段四：编码
+│   ├── 05-deploy.md                 # 阶段五：部署测试环境
+│   ├── 06-testing.md                # 阶段六：自动化测试
+│   ├── 07-pr-cr.md                  # 阶段七：提 PR 与智能 CR
+│   └── 08-release.md                # 阶段八：上线发布
+├── references/
+│   ├── backend-service-context.md    # 酒店落地页后端服务上下文
+│   ├── backend-coding/
+│   │   ├── workflow.md               # BE 编码完整 workflow
+│   │   ├── patterns.md               # BE 编码代码模式参考
+│   │   └── review-checklist.md       # BE 编码自查清单
+│   ├── templates/
+│   │   ├── frontend-tech-plan-template.md
+│   │   ├── backend-tech-plan-template.md
+│   │   ├── state-driven-prd-template.md
+│   │   ├── function-driven-prd-template.md
+│   │   └── phase-1-review-template.md
+│   └── testing/
+│       ├── analysis-rules.md
+│       └── report-template.md
+└── docs/</code></pre></div><div class="section"><h2>流程总览</h2><p><strong>阶段一：需求澄清</strong> — 需求预检 + 业务组件定位 + 分轮澄清 + 生成澄清版 PRD；可选：用户显式要求时生成阶段一复盘。</p><p><strong>阶段二：技术方案与协同契约</strong> — 基于澄清文档 + 代码分析，按 owner 生成 FE / BE 方案，并对齐接口与配置契约。</p><p><strong>阶段三：分支准备</strong> — 询问用户走 Fedo 流程，还是根据需求从 master 创建开发分支。阶段三完成后，状态进入「开发中」。</p><p><strong>阶段四：编码</strong> — 切换分支 + 按技术方案逐项编码 + 自测；编码完成后询问继续部署测试环境，还是创建 PR 到 master。</p><p><strong>阶段五：部署测试环境</strong> — Talos 部署 + 监听流水线。</p><p><strong>阶段六：自动化测试</strong> — 读取需求条目 + 技术方案 + 分析 diff + 生成测试用例 + 浏览器自动化执行 + 生成报告 + 归档学城。</p><p><strong>阶段七：提 PR 与智能 CR</strong> — 创建/更新 PR + 调用 smart-cr 审查 + 轮询 PR 可合并状态，3 分钟内可合并则自动 merge；超时则停留当前阶段，回传 PR 链接给用户检查。</p><p><strong>阶段八：上线发布</strong> — 调用 talos-project-publish 执行正式发布。阶段八成功后，状态变为「已完成」。</p></div><div class="section"><h2>触发条件</h2><p>用户明确提到 hotel-sdd；或用户提供需求/任务/仓库/分支/PR/部署环境/测试地址等任一交付上下文；或用户希望按流程推进需求，例如：</p><ul><li>"帮我开发"、"帮我改动"、"做个需求"、"提交代码"</li><li>"部署测试环境"、"跑自动化测试"、"提 PR"、"帮我 CR"</li><li>"上线发布"、"新需求"、"帮我做需求"</li><li>用户显式要求复盘阶段一或需求澄清阶段</li></ul></div><div class="section"><h2>核心原则</h2><ul><li>每阶段结束必须等待用户确认，不得自动跳入下一阶段</li><li>技术方案（必要时包含协同契约）必须先于代码，未经用户确认的技术方案不得开始写代码</li><li>状态驱动：阶段间信息通过状态对象传递，禁止依赖对话历史</li><li>状态持久化：每阶段完成后将状态写入 Skill 运行目录，不写入业务仓库</li><li>状态写入失败必须阻断推进：不得静默进入下一阶段</li></ul></div><div class="section"><h2>开发中改动级别判断</h2><p>需要技术方案（回到阶段二）：涉及新增/修改业务逻辑的功能开发、需要对接新接口的改动、模块级别的重构。</p><p>不需要技术方案（直接改代码）：文案/颜色/间距等 UI 微调、原因明确的 Bug 修复、配置变更、依赖升级、纯样式调整。</p><p>无法判断时，问用户一句："这个改动需要走技术方案流程吗，还是我直接改？"</p></div><div class="section"><h2>会话续接</h2><p>Skill 触发时，先读取 config/hotel.yaml 获取团队配置，然后检查是否存在未完成的流程：</p><ul><li>命中多个 _phase ≠ done 的状态文件 → 展示候选列表并让用户选择</li><li>仅命中一个且 _phase ≠ done → 询问用户继续还是重新开始</li><li>不存在 → 正常从阶段一开始</li></ul></div><div class="section"><h2>中间介入规则</h2><div class="table-wrap"><table><tr><th>用户说法</th><td>入口阶段</td></tr><tr><th>默认（无特殊指定）</th><td>阶段一</td></tr><tr><th>&quot;部署测试环境&quot; / &quot;发泳道&quot;</th><td>阶段五</td></tr><tr><th>&quot;跑自动化测试&quot;</th><td>阶段六</td></tr><tr><th>&quot;提 PR&quot; / &quot;提交 PR&quot; / &quot;帮我 CR&quot;</th><td>阶段七</td></tr><tr><th>&quot;上线&quot; / &quot;发布&quot; / &quot;正式发布&quot;</th><td>阶段八</td></tr></table></div></div><div class="section"><h2>外部依赖</h2><p>主要依赖：talos-project-publish（阶段五/八）、hotel-marketing-backend / marketing-backend（阶段五 BE）、smart-cr（阶段七）、explore-design-tree-remote（阶段四 FE 设计稿还原）、max-preflight（阶段四样式规范预检）、chrome-devtools-mcp（阶段四联调/阶段六测试）。</p><p>按阶段检查依赖，不在流程一开始全量安装。缺失依赖时先告知用户，不得未经确认自动安装。</p></div><div class="section"><h2>命令行安装</h2><pre><code>mtskills i hotel-sdd --target-dir ~/.openclaw/skills</code></pre></div>
+<footer><p>来源：<a href="https://friday.sankuai.com/skills/skill-detail?activeTab=overview&activeTestTab=cases&id=18053" target="_blank">Friday Skills 广场</a> · 离线版本，仅供参考</p></footer>
+</div></body></html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hotel-design-spec Skill — 酒旅营销活动设计规范</title><style>* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 15px; line-height: 1.8; color: #1a1a1a; background: #f5f6f7; }
+.page-wrap { max-width: 900px; margin: 0 auto; background: #fff; min-height: 100vh; padding: 40px 48px 80px; }
+h1 { font-size: 1.9em; margin: 1.4em 0 .6em; color: #0d0d0d; }
+h2 { font-size: 1.45em; margin: 1.3em 0 .5em; color: #111; border-bottom: 2px solid #eee; padding-bottom: .3em;}
+h3 { font-size: 1.2em; margin: 1.1em 0 .4em; color: #222; }
+p { margin: .6em 0; }
+a { color: #1a73e8; text-decoration: none; } a:hover { text-decoration: underline; }
+code { background: #f0f0f0; border-radius: 3px; padding: 1px 5px; font-family: monospace; font-size: .9em; }
+pre { background: #1e1e1e; color: #d4d4d4; border-radius: 8px; padding: 16px; overflow-x: auto; margin: 12px 0; }
+pre code { background: none; color: inherit; padding: 0; }
+.table-wrap { overflow-x: auto; margin: 14px 0; }
+table { border-collapse: collapse; width: 100%; font-size: .93em; }
+th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; vertical-align: top; }
+th { background: #f7f7f7; font-weight: 600; }
+ul, ol { padding-left: 1.8em; margin: .5em 0; } li { margin: .2em 0; }
+hr { border: none; border-top: 2px solid #eee; margin: 24px 0; }
+.meta-box { background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+.meta-box th { background: none; width: 120px; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .8em; font-weight: 600;
+  margin: 0 3px; background: #e8f0fe; color: #1a73e8; }
+.skill-header { background: linear-gradient(135deg, #f0f4ff, #e8f0fe); border-radius: 10px; padding: 24px 28px; margin: 20px 0 28px; }
+.skill-header h1 { margin: 0 0 8px; font-size: 1.6em; }
+.skill-header .desc { color: #444; margin: 8px 0 12px; }
+nav.breadcrumb { font-size: .85em; color: #888; margin-bottom: 24px; }
+nav.breadcrumb a { color: #1a73e8; }
+footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #eee; color: #999; font-size: .82em; text-align: center; }
+.section { margin: 20px 0; }
+.tag-row { margin: 8px 0; }
+blockquote { border-left: 4px solid #ddd; margin: 12px 0; padding: 8px 16px; background: #fafafa; color: #555; }
+.mermaid-block { background: #f8f9ff; border: 1px solid #dde; border-radius: 8px; padding: 16px; margin: 12px 0; overflow-x: auto; white-space: pre; font-family: monospace; font-size: .85em; color: #334; }</style></head>
+<body><div class="page-wrap">
+<nav class="breadcrumb">导航：<a href="index.html">💡 栏目首页</a> | <a href="doc_04.html">04期</a></nav>
+<div class="skill-header"><h1>⚡ hotel-design-spec</h1><div class="desc">酒旅营销活动设计规范参考，包含颜色、字体、间距、圆角、阴影、组件等规范，帮助 AI 生成符合设计规范的前端样式代码。</div><div class="tag-row"><span class="badge">视觉AI</span><span class="badge">营销玩法搭建</span><span class="badge">前端样式</span></div></div>
+<div class="meta-box"><div class="table-wrap"><table>
+<tr><th>Skill ID</th><td>23481</td><th>版本</th><td>V1</td><th>创建人</th><td>zhaoyan53</td></tr>
+<tr><th>原始链接</th><td colspan="3"><a href="https://friday.sankuai.com/skills/skill-detail?activeTab=overview&activeTestTab=cases&id=23481" target="_blank">https://friday.sankuai.com/skills/skill-detail?activeTab=overview&activeTestTab=cases&id=23481</a></td></tr>
+</table></div></div>
+<hr>
+<div class="section"><h2>简介</h2><p>酒旅营销活动 SDD 流程设计规范。移动端设计规范参考，包含颜色、字体、间距、圆角、阴影、组件等规范，帮助 AI 生成符合设计规范的前端样式代码。</p><p>当用户需要编写前端样式、实现 UI 组件、还原设计稿，或询问颜色/字号/间距/圆角/按钮/弹窗等设计规范时触发。</p></div><div class="section"><h2>全局前提</h2><h3>尺寸换算（必读）</h3><p>所有规范数值均基于 750px 移动端设计稿（@2x），编码时视口为 375px（@1x），所有数值除以 2 转为 CSS 值。</p><div class="table-wrap"><table><tr><th>设计稿值</th><td>CSS 值</td></tr><tr><th>24px 边距</th><td>12px</td></tr><tr><th>28号字</th><td>font-size: 14px</td></tr><tr><th>96px 按钮高度</th><td>height: 48px</td></tr><tr><th>36px 圆角</th><td>border-radius: 18px</td></tr></table></div><h3>对比度原则（强制）</h3><ul><li>浅色背景用深色文字（#111111 / #555555 / #888888）</li><li>深色背景用白色文字</li><li>黄色背景（#FFDD00）必须用深色文字（#7A3100 或 #111111），禁止白色文字</li><li>置灰色 #C2C2C2 仅用于禁用状态，不可用于正常可读内容</li><li>禁止低对比度组合（浅黄背景+白字、浅灰背景+置灰文字等）</li></ul><h3>颜色使用原则</h3><ul><li>所有颜色平级，根据项目画面风格自行选定一套主色和辅助色</li><li>同一项目内同类型元素（主按钮、背景色、强调色）必须使用同一颜色</li><li>从色库中选取 1~2 个主色、1 个辅助色即可，保持画面整体协调</li><li>禁止出现同一页面内按钮五颜六色、背景色杂乱的情况</li></ul></div><div class="section"><h2>参考文件索引</h2><ul><li><strong>colors.md</strong> — 品牌色（黄/红/橙/绿/蓝/紫）、渐变色、中性色（文字/背景/分割线/描边/遮罩）</li><li><strong>typography.md</strong> — 中文字阶（推荐档位）、数字字阶（美团新数字字体）、字重、使用规则</li><li><strong>spacing.md</strong> — 栅格梯度（元素/组件/模块间距）、页面边距（强制 24px）、双列卡片栅格</li><li><strong>radius-shadow.md</strong> — 6级圆角梯度、圆角嵌套规则、3级阴影样式</li><li><strong>components.md</strong> — 胶囊按钮、文字按钮、按钮筛选器（Tab）、文字筛选器、功能弹窗、营销弹窗、内容弹窗</li></ul></div><div class="section"><h2>快速参考</h2><ul><li>写按钮样式 → components.md</li><li>写文字颜色/背景色 → colors.md</li><li>写 font-size / line-height → typography.md</li><li>写 padding / margin / gap → spacing.md</li><li>写 border-radius / box-shadow → radius-shadow.md</li></ul></div><div class="section"><h2>命令行安装</h2><pre><code>mtskills i hotel-design-spec --target-dir ~/.openclaw/skills</code></pre></div>
+<footer><p>来源：<a href="https://friday.sankuai.com/skills/skill-detail?activeTab=overview&activeTestTab=cases&id=23481" target="_blank">Friday Skills 广场</a> · 离线版本，仅供参考</p></footer>
+</div></body></html>
